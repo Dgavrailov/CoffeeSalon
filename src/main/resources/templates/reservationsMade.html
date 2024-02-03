@@ -1,0 +1,203 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Barista Cafe - HTML Reservation Form</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="css/vegas.min.css" rel="stylesheet">
+
+    <link href="css/tooplate-barista.css" rel="stylesheet">
+</head>
+
+<body class="reservation-page">
+
+<main>
+
+
+
+    <section class="booking-section section-padding">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <img src="images/coffee-beans.png" class="navbar-brand-image img-fluid" alt="">
+                    Barista.co
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+        </nav>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-10 col-12 mx-auto">
+                    <div class="booking-form-wrap">
+                        <div class="row">
+
+                                <form class="custom-form booking-form">
+                                    <div class="text-center mb-4 pb-lg-2">
+                                        <h2 class="text-white">Reservations</h2>
+                                    </div>
+
+                                    <div class="booking-form-body">
+                                        <table class="table table-bordered text-white text-center">
+                                            <thead>
+                                            <tr>
+                                                <th>First name</th>
+                                                <th>Last name</th>
+                                                <th>Email</th>
+                                                <th>Time</th>
+                                                <th>Date</th>
+                                                <th>ID</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="reservation : ${reservations}">
+                                                <td th:text="${reservation.owner.firstName}"></td>
+                                                <td th:text="${reservation.owner.lastName}"></td>
+                                                <td th:text="${reservation.owner.email}"></td>
+                                                <td th:text="${reservation.reservationTime}"></td>
+                                                <td th:text="${reservation.reservationDate}"></td>
+                                                <td th:text="${reservation.id}"></td>
+                                                <td>
+                                                    <button class="btn btn-danger" th:id="'deleteButton_' + ${reservation.id}" th:data-reservation-id="${reservation.id}">Delete</button>
+                                               </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-12 me-auto">
+                    <em class="text-white d-block mb-4">Where to find us?</em>
+
+                    <strong class="text-white">
+                        <i class="bi-geo-alt me-2"></i>
+                        <a href="https://maps.app.goo.gl/7QBameRQEhZcoi7e8" class="text-white" >Find us on map</a>
+
+                    </strong>
+                </div>
+
+                <div class="col-lg-3 col-12 mt-4 mb-3 mt-lg-0 mb-lg-0">
+                    <em class="text-white d-block mb-4">Contact</em>
+
+                    <p class="d-flex mb-1">
+                        <strong class="me-2">Phone: </strong>
+                        <a href="tel:+359883558644" class="text-white" >Call us now</a>
+                    </p>
+
+                    <p class="d-flex">
+                        <strong class="me-2">Email:</strong>
+
+                        <a href="mailto:info@yourgmail.com" class="site-footer-link">
+                            dgavrailov@gmail.com
+                        </a>
+                    </p>
+                </div>
+
+
+                <div class="col-lg-5 col-12">
+                    <em class="text-white d-block mb-4">Opening Hours.</em>
+
+                    <ul class="opening-hours-list">
+                        <li class="d-flex">
+                            Monday - Friday
+                            <span class="underline"></span>
+
+                            <strong>9:00 - 18:00</strong>
+                        </li>
+
+                        <li class="d-flex">
+                            Saturday
+                            <span class="underline"></span>
+
+                            <strong>11:00 - 16:30</strong>
+                        </li>
+
+                        <li class="d-flex">
+                            Sunday
+                            <span class="underline"></span>
+
+                            <strong>Closed</strong>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-8 col-12 mt-4">
+                    <p class="copyright-text mb-0">Copyright © Barista Cafe 2024
+                        <!--                                    - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a>-->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</main>
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/vegas.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</body>
+
+<script>
+    $(document).ready(function() {
+        $('[id^=deleteButton_]').on('click', function() {
+            var reservationId = $(this).data('reservation-id');
+
+            if (confirm('Are you sure you want to delete this reservation?')) {
+                $.ajax({
+                    url: '/reservations/delete/' + reservationId,
+                    type: 'DELETE',
+                    success: function(data) {
+
+                        console.log('Reservation deleted successfully:', data);
+                        window.location.reload(); //reload the page
+                    },
+                    error: function(error) {
+                        console.error('Failed to delete reservation:', error);
+                    }
+                });
+            }
+        });
+    });
+</script>
+</html>

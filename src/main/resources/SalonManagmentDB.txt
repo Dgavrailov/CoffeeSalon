@@ -1,0 +1,48 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+
+Table Users {
+  id integer [primary key]
+  roleId varchar
+  firstName varchar
+  lastName varchar
+  password varchar
+  email varchar
+  created_at timestamp
+  phone varchar
+  address varchar
+}
+
+Table Products {
+  id integer [primary key]
+  title varchar
+  description text
+  price double
+
+}
+
+Table Reservations {
+  id integer [primary key]
+  user_id integer
+  reservationDate date
+  reservationTime time
+  salonId integer
+  status varchar
+}
+
+
+Table Salons {
+  id integer [primary key]
+  title varchar
+  description text [note: 'Destination and etc.']
+  user_id integer
+  product varchar
+
+}
+Ref: Reservations.id - Users.id
+Ref: Salons.user_id > Users.id // many-to-one
+Ref: Reservations.user_id > Users.id
+Ref: Reservations.salonId - Salons.id
+Ref: Products.id - Salons.id // one to one
+
